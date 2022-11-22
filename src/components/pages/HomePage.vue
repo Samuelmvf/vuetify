@@ -4,13 +4,15 @@
       v-model="drawer"
       :mini-variant.sync="mini"
       permanent
+      style="min-width: 60px"
+      absolute
     >
       <v-list-item class="px-2">
         <v-list-item-avatar>
-          <v-img src="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"></v-img>
+          <v-img src="https://cdn.dribbble.com/users/3958478/screenshots/11016183/media/9f2baddbecd4ae21ec86b88c5ba1c0fd.png?compress=1&resize=400x300&vertical=top"></v-img>
         </v-list-item-avatar>
 
-        <v-list-item-title>John Leider</v-list-item-title>
+        <v-list-item-title>SM Blazy</v-list-item-title>
 
         <v-btn
           icon
@@ -27,6 +29,7 @@
           v-for="item in items"
           :key="item.title"
           link
+          @click="goToPath(item.action)"
         >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
@@ -38,12 +41,9 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-row class="ma-0">
-      <v-col cols="12" md="6" class="pa-0 purple darken-3 d-flex justify-center align-center">
-        <v-btn>Cadastrar funcionário</v-btn>
-      </v-col>
-      <v-col cols="12" md="6" class="pa-0 purple lighten-3  d-flex justify-center align-center">
-        <v-btn>Listar Funcionários</v-btn>
+    <v-row class="ma-0 ml-15">
+      <v-col cols="12" class="pa-0">
+        <router-view></router-view>
       </v-col>
     </v-row>
   </v-container>
@@ -55,21 +55,20 @@
       return {
         drawer: true,
         items: [
-          { title: 'Home', icon: 'mdi-home-city' },
-          { title: 'My Account', icon: 'mdi-account' },
-          { title: 'Users', icon: 'mdi-account-group-outline' },
+          { title: 'Inicio', icon: 'mdi-home-city', action: "/" },
+          { title: 'Cadastro de usuários', icon: 'mdi-account', action: "/cadastro-usuarios" },
+          { title: 'Listar usuários', icon: 'mdi-format-list-bulleted-square', action: "/lista-usuarios" },
         ],
         mini: true,
       }
     },
+    methods: {
+      goToPath (path) {
+        if (this.$route.path !== path) this.$router.push(path)
+      }
+    }
   }
 </script>
 
 <style>
-.all-view-height {
-  height: 100vh;
-}
-.full-height {
-  height: 100%;
-}
 </style>
