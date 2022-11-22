@@ -1,4 +1,4 @@
-# vuetify
+# example-vuetify-ui
 
 ## Project setup
 ```
