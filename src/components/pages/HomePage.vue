@@ -50,24 +50,24 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        drawer: true,
-        items: [
-          { title: 'Home', icon: 'mdi-home-city', action: "/" },
-          { title: 'User register', icon: 'mdi-account', action: "/user/register" },
-          { title: 'List of users', icon: 'mdi-format-list-bulleted-square', action: "/user/list" },
-        ],
-        mini: true,
-      }
-    },
-    methods: {
-      goToPath (path) {
-        if (this.$route.path !== path) this.$router.push(path)
-      }
+export default {
+  data () {
+    return {
+      drawer: true,
+      items: [
+        { title: 'Home', icon: 'mdi-home-city', action: "/" },
+        { title: 'User register', icon: 'mdi-account', action: "/user/register" },
+        { title: 'List of users', icon: 'mdi-format-list-bulleted-square', action: "/user/list" },
+      ],
+      mini: true,
+    }
+  },
+  methods: {
+    goToPath (path) {
+      if (this.$route.path !== path) this.$router.push(path)
     }
   }
+}
 </script>
 
 <style>

@@ -3,41 +3,42 @@
     <v-main>
       <router-view></router-view>
     </v-main>
+    <notification-management ref="notificationManagement"></notification-management>
   </v-app>
 </template>
 
 <script>
 import '../server.js'
+import NotificationManagement from '@/components/NotificationManagement.vue'
+
 export default {
   name: 'App',
+  components: {
+    NotificationManagement
+  },
   methods: {
+    setNotificationManagementInRoot () {
+      this.$root.notificationManagement = this.$refs.notificationManagement
+    },
     setPersonsIconInRoot () {
+      this.$root.icons = {}
       //TODO: made a review on this import of images, paleative solution for use of imagens in v-img
-      const person1 = require('@/assets/icons/persons/icon-person-1.png')
-      const person2 = require('@/assets/icons/persons/icon-person-2.png')
-      const person3 = require('@/assets/icons/persons/icon-person-3.png')
-      const person4 = require('@/assets/icons/persons/icon-person-4.png')
-      const person5 = require('@/assets/icons/persons/icon-person-5.png')
-      const person6 = require('@/assets/icons/persons/icon-person-6.png')
-      const person7 = require('@/assets/icons/persons/icon-person-7.png')
-      const person8 = require('@/assets/icons/persons/icon-person-8.png')
-
       this.$root.icons.persons = [ 
-        { id: 1, img: person1 },
-        { id: 2, img: person2 },
-        { id: 3, img: person3 },
-        { id: 4, img: person4 },
-        { id: 5, img: person5 },
-        { id: 6, img: person6 },
-        { id: 7, img: person7 },
-        { id: 8, img: person8 }
+        { id: 1, img: require('@/assets/icons/persons/icon-person-1.png') },
+        { id: 2, img: require('@/assets/icons/persons/icon-person-2.png') },
+        { id: 3, img: require('@/assets/icons/persons/icon-person-3.png') },
+        { id: 4, img: require('@/assets/icons/persons/icon-person-4.png') },
+        { id: 5, img: require('@/assets/icons/persons/icon-person-5.png') },
+        { id: 6, img: require('@/assets/icons/persons/icon-person-6.png') },
+        { id: 7, img: require('@/assets/icons/persons/icon-person-7.png') },
+        { id: 8, img: require('@/assets/icons/persons/icon-person-8.png') }
       ]
     }
   },
 
   mounted () {
-    this.$root.icons = {}
     this.setPersonsIconInRoot()
+    this.setNotificationManagementInRoot()
   }
 }
 </script>

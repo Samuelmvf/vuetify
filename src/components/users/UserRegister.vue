@@ -138,6 +138,12 @@ export default {
       if (isFormValid) {
         userService.saveOrUpdate(this.user)
           .then(response => {
+            this.$root.notificationManagement.notifyUser({
+              message: "New user has been created",
+              timeout: 2000,
+              showing: true,
+              color: 'success'
+            })
             console.log('Salvo com sucesso', response)
           })
       }

@@ -9,11 +9,12 @@ createServer({
       users: [
         {
           id: "1",
-          fullName: 'Samuel Maia Verçosa Ferreira',
+          fullName: 'Samuel Maia',
           adress: 'Av. Contagem, 1305 - Santa Inês',
           phone: '(31) 3486-9922',
-          login: 'samuel.maia',
-          email: 'samuel.maia@gmail.com',
+          login: 'samuelmvf',
+          iconId: 6,
+          email: 'samuelmvf@gmail.com',
           password: undefined
         },
         {
@@ -22,6 +23,7 @@ createServer({
           adress: 'Av. Contagem, 1310 - Santa Inês',
           phone: '(31) 3486-9922',
           login: 'marcelle.samara',
+          iconId: 3,
           email: 'marcelle.samara@gmail.com',
           password: undefined
         }
