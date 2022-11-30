@@ -10,7 +10,26 @@
 import '../server.js'
 
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    setPersonsIconInRoot () {
+      this.$root.icons.persons = [
+        '/assets/icons/persons/icon-person-1.png',
+        '/assets/icons/persons/icon-person-2.png',
+        '/assets/icons/persons/icon-person-3.png',
+        '/assets/icons/persons/icon-person-4.png',
+        '/assets/icons/persons/icon-person-5.png',
+        '/assets/icons/persons/icon-person-6.png',
+        '/assets/icons/persons/icon-person-7.png',
+        '/assets/icons/persons/icon-person-8.png'
+      ]
+    }
+  },
+
+  mounted () {
+    this.$root.icons = {}
+    this.setPersonsIconInRoot()
+  }
 }
 </script>
 

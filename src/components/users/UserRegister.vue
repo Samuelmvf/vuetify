@@ -1,6 +1,8 @@
 <template>
   <v-container fluid class="bg-gradient-finish-white all-view-height" style="min-width:600px;">
-    <v-form>
+    <v-form
+      ref="formUserRegister"
+    >
       <v-row justify="center" class="my-5">
         <v-icon class="pr-3 white--text" large>mdi-account-plus</v-icon>
         <h1 class="white--text font-poppins" style="font-weight: 500; font-size: 2.125rem;">User register</h1>
@@ -58,6 +60,13 @@
             Register
           </v-btn>
           <v-btn
+            color="secondary"
+            class="ma-2 white--text"
+            @click.prevent="clearFields"
+          >
+            Clear
+          </v-btn>
+          <v-btn
             color="grey"
             class="ma-2 white--text"
             @click.prevent="goToHome"
@@ -89,18 +98,16 @@ export default {
     }
   },
   methods: {
-    goToHome () {
-      this.$router.push({ name: 'home' })
-    },
     actionPersistUser () {
-      /* eslint-disable */
-      debugger
-      userService.saveOrUpdate(this.user)
-        .then(response => {
-          debugger
-          console.log('Salvo com sucesso', response)
-        })
+      const isFormValid = this.$refs.formUserRegister.validate()
+      if (isFormValid) {
+        userService.saveOrUpdate(this.user)
+          .then(response => {
+            console.log('Salvo com sucesso', response)
+          })
+      }
     },
+
     clearFields () {
       this.user = {
         id: undefined,
@@ -111,7 +118,15 @@ export default {
         email: undefined,
         password: undefined
       }
+      this.$nextTick(() => {
+        this.$refs.formUserRegister?.resetValidation()
+      })
     },
+
+    goToHome () {
+      this.$router.push({ name: 'home' })
+    },
+
     rulesEmail () {
       const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       return pattern.test(this.user.email) || 'Invalid email address'

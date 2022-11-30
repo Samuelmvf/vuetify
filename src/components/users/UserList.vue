@@ -98,10 +98,8 @@ export default {
   },
   methods: {
     findAllUsers () {
-      debugger
       userService.getAll()
         .then(response => {
-          debugger
           console.log(response)
         })
     }
