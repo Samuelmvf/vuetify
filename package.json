@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@mdi/font": "^7.0.96",
+    "axios": "^1.2.0",
     "core-js": "^3.8.3",
     "vue": "^2.6.14",
     "vue-router": "^3.6.5",
-    "vuetify": "^2.6.12"
+    "vuetify": "^2.6.12",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -22,6 +24,7 @@
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "miragejs": "^0.1.46",
     "node-sass": "^8.0.0",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",

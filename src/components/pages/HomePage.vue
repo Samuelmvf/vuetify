@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pa-0 ma-0 d-flex all-view-height">
+  <v-container fill-height fluid class="pa-0 ma-0">
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant.sync="mini"
@@ -12,7 +12,7 @@
           <v-img src="https://cdn.dribbble.com/users/3958478/screenshots/11016183/media/9f2baddbecd4ae21ec86b88c5ba1c0fd.png?compress=1&resize=400x300&vertical=top"></v-img>
         </v-list-item-avatar>
 
-        <v-list-item-title>SM Blazy</v-list-item-title>
+        <v-list-item-title>User management</v-list-item-title>
 
         <v-btn
           icon
@@ -55,9 +55,9 @@
       return {
         drawer: true,
         items: [
-          { title: 'Inicio', icon: 'mdi-home-city', action: "/" },
-          { title: 'Cadastro de usuários', icon: 'mdi-account', action: "/cadastro-usuarios" },
-          { title: 'Listar usuários', icon: 'mdi-format-list-bulleted-square', action: "/lista-usuarios" },
+          { title: 'Home', icon: 'mdi-home-city', action: "/" },
+          { title: 'User register', icon: 'mdi-account', action: "/user/register" },
+          { title: 'List of users', icon: 'mdi-format-list-bulleted-square', action: "/user/list" },
         ],
         mini: true,
       }

@@ -1,7 +1,7 @@
 import HomePage from '@/components/pages/HomePage'
-import CadastroUsuario from '@/components/users/CadastroUsuario'
-import ListaUsuarios from '@/components/users/ListaUsuarios'
-import InformacoesPrincipais from '@/components/InformacoesPrincipais'
+import UserRegister from '@/components/users/UserRegister'
+import UserList from '@/components/users/UserList'
+import PrimaryInformation from '@/components/PrimaryInformation'
 
 const routes = [
   {
@@ -11,27 +11,27 @@ const routes = [
       {
         path: "/",
         name: "home",
-        component: InformacoesPrincipais,
+        component: PrimaryInformation,
       },
       {
-        path: "/cadastro-usuarios",
-        name: "cadastrarUsuarios",
-        component: CadastroUsuario
+        path: "/user/register",
+        name: "userRegister",
+        component: UserRegister
       },
       {
-        path: "/lista-usuarios",
-        name: "listaUsuarios",
-        component: ListaUsuarios
+        path: "/user/list",
+        name: "userList",
+        component: UserList
       }
     ]
-  },
-  {
-    path: "*",
-    component: HomePage,
-    beforeEnter: (_to, _from, next) => {
-      next({ path: "/" })
-    },
-  }
+  }// ,
+  // {
+  //   path: "*",
+  //   component: HomePage,
+  //   beforeEnter: (_to, _from, next) => {
+  //     next({ path: "/" })
+  //   },
+  // }
 ]
 
 export default routes
