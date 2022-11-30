@@ -29,11 +29,38 @@
               :rules="[value => !!value || 'Mandatory field']"
             ></v-text-field>
           </v-col>
-          <v-col cols="12" sm="6" class="pa-0">
+          <v-col cols="8" sm="4" class="pa-0">
             <v-text-field dense label="Login*" class="pl-md-1" outlined
               v-model="user.login"
               :rules="[value => !!value || 'Mandatory field']"
             ></v-text-field>
+          </v-col>
+          <v-col cols="4" sm="2" class="pa-0">
+            <v-select
+              v-model="user.iconId"
+              :items="personsIcon"
+              label="Avatar"
+              outlined
+              item-value="id"
+              dense
+            >
+              <template v-slot:item="{ item }">
+                <v-img
+                  :src="item.img"
+                  height="32px"
+                  contain
+                  >
+                </v-img>
+              </template>
+              <template v-slot:selection="{ item }">
+                <v-img
+                  :src="item.img"
+                  height="32px"
+                  contain
+                  >
+                </v-img>
+              </template>
+            </v-select>
           </v-col>
         </v-row>
         <v-row class="px-5 font-poppins">
@@ -93,10 +120,18 @@ export default {
         phone: undefined,
         login: undefined,
         email: undefined,
+        iconId: undefined,
         password: undefined
       }
     }
   },
+
+  computed: {
+    personsIcon () {
+      return this.$root.icons?.persons || []
+    }
+  },
+
   methods: {
     actionPersistUser () {
       const isFormValid = this.$refs.formUserRegister.validate()

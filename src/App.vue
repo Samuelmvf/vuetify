@@ -8,20 +8,29 @@
 
 <script>
 import '../server.js'
-
 export default {
   name: 'App',
   methods: {
     setPersonsIconInRoot () {
-      this.$root.icons.persons = [
-        '/assets/icons/persons/icon-person-1.png',
-        '/assets/icons/persons/icon-person-2.png',
-        '/assets/icons/persons/icon-person-3.png',
-        '/assets/icons/persons/icon-person-4.png',
-        '/assets/icons/persons/icon-person-5.png',
-        '/assets/icons/persons/icon-person-6.png',
-        '/assets/icons/persons/icon-person-7.png',
-        '/assets/icons/persons/icon-person-8.png'
+      //TODO: made a review on this import of images, paleative solution for use of imagens in v-img
+      const person1 = require('@/assets/icons/persons/icon-person-1.png')
+      const person2 = require('@/assets/icons/persons/icon-person-2.png')
+      const person3 = require('@/assets/icons/persons/icon-person-3.png')
+      const person4 = require('@/assets/icons/persons/icon-person-4.png')
+      const person5 = require('@/assets/icons/persons/icon-person-5.png')
+      const person6 = require('@/assets/icons/persons/icon-person-6.png')
+      const person7 = require('@/assets/icons/persons/icon-person-7.png')
+      const person8 = require('@/assets/icons/persons/icon-person-8.png')
+
+      this.$root.icons.persons = [ 
+        { id: 1, img: person1 },
+        { id: 2, img: person2 },
+        { id: 3, img: person3 },
+        { id: 4, img: person4 },
+        { id: 5, img: person5 },
+        { id: 6, img: person6 },
+        { id: 7, img: person7 },
+        { id: 8, img: person8 }
       ]
     }
   },

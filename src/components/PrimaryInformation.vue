@@ -24,8 +24,13 @@
       </div>
       <div style="background-color: white; width: 85%; height: 3px"></div>
     </v-row>
-    <v-row align="center" justify="center" class="ma-0 mt-9 white--text" style="height: calc(20vh - 40px);">
-      <span>@copyright Samuel Maia</span>
+    <v-row  align="center" justify="center" class="ma-0 mt-9 white--text" style="height: calc(20vh - 40px);">
+      <v-col cols="12" class="pa-0 ma-0 d-flex justify-center">
+        <span>@copyright Samuel Maia</span>
+      </v-col>
+      <v-col cols="12" class="pa-0 ma-0 d-flex justify-center">
+        <a href="https://www.flaticon.com/free-icons/person" title="person icons">Person icons created by Freepik - Flaticon</a>
+      </v-col>
     </v-row>
   </v-container>
 </template>
