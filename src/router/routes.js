@@ -24,14 +24,14 @@ const routes = [
         component: UserList
       }
     ]
-  }// ,
-  // {
-  //   path: "*",
-  //   component: HomePage,
-  //   beforeEnter: (_to, _from, next) => {
-  //     next({ path: "/" })
-  //   },
-  // }
+  },
+  {
+    path: "*",
+    component: HomePage,
+    beforeEnter: (_to, _from, next) => {
+      next({ path: "/" })
+    },
+  }
 ]
 
 export default routes

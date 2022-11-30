@@ -137,14 +137,14 @@ export default {
       const isFormValid = this.$refs.formUserRegister.validate()
       if (isFormValid) {
         userService.saveOrUpdate(this.user)
-          .then(response => {
+          .then(() => {
             this.$root.notificationManagement.notifyUser({
               message: "New user has been created",
               timeout: 2000,
               showing: true,
               color: 'success'
             })
-            console.log('Salvo com sucesso', response)
+            this.$router.push('/user/list')
           })
       }
     },
