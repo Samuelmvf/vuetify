@@ -39,10 +39,11 @@
             <v-select
               v-model="user.iconId"
               :items="personsIcon"
-              label="Avatar"
+              label="Avatar*"
               outlined
               item-value="id"
               dense
+              :rules="[value => !!value || 'Mandatory field']"
             >
               <template v-slot:item="{ item }">
                 <v-img

@@ -1,7 +1,7 @@
 import { createServer, Model } from 'miragejs'
 
 const GET_ALL_MS = 500
-const POST_PUT_MS = 2000
+const POST_PUT_MS = 500
 
 createServer({
   models: {

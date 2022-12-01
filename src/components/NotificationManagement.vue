@@ -7,6 +7,7 @@
       :color="notification.color"
       v-model="notification.showing"
       :style="`bottom: ${index * 60 + 8}px`"
+      @input="removeShowedNotification"
     >
       {{ notification.message }}
       <v-btn
@@ -38,18 +39,9 @@ export default {
     notifyUser (notification) {
       this.notifications = [ ...this.notifications, notification]
     },
-    removeOcultNotifications () {
-      this.notifications = this.notifications.filter(notification =>!notification.showing)
+    removeShowedNotification () {
+      this.notifications = this.notifications.filter(notification => notification.showing)
     }
-  },
-  created () {
-    const ONE_MINUTE_MS = 60000
-    this.cleanUnusedNotifications = setInterval(() => {
-      this.removeOcultNotifications()
-    }, ONE_MINUTE_MS)
-  },
-  beforeDestroy () {
-    clearInterval(this.cleanUnusedNotifications)
   }
 }
 </script>
