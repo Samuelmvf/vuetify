@@ -83,6 +83,7 @@
             color="primary"
             class="ma-2 white--text"
             @click.prevent="actionPersistUser"
+            :loading="registerLoading"
           >
             Register
           </v-btn>
@@ -122,7 +123,8 @@ export default {
         email: undefined,
         iconId: undefined,
         password: undefined
-      }
+      },
+      registerLoading: false
     }
   },
 
@@ -136,15 +138,26 @@ export default {
     actionPersistUser () {
       const isFormValid = this.$refs.formUserRegister.validate()
       if (isFormValid) {
+        this.registerLoading = true
         userService.saveOrUpdate(this.user)
           .then(() => {
+            this.registerLoading = false
             this.$root.notificationManagement.notifyUser({
               message: "New user has been created",
               timeout: 2000,
               showing: true,
               color: 'success'
             })
-            this.$router.push('/user/list')
+            // this.$router.push('/user/list')
+          })
+          .catch(() => {
+            this.registerLoading = false
+            this.notificationManagement.notifyUser({
+              message: "Erro on create user, try again later",
+              timeout: 2000,
+              showing: true,
+              color: 'error'
+            })
           })
       }
     },

@@ -1,5 +1,8 @@
 import { createServer, Model } from 'miragejs'
 
+const GET_ALL_MS = 500
+const POST_PUT_MS = 2000
+
 createServer({
   models: {
     user: Model
@@ -36,14 +39,13 @@ createServer({
 
     this.get('/users', () => {
       return this.schema.all('user')
-    });
+    }, { timing: GET_ALL_MS});
 
     this.post('/users', (schema, request) => {
       const requestBody = JSON.parse(request.requestBody)
       const { user } = requestBody
-
       return schema.create('user', user);
-    })
+    }, { timing: POST_PUT_MS})
 
   }
 })

@@ -41,7 +41,7 @@ export default {
   name: 'UserList',
   data() {
     return {
-      title: 'List of users',
+      loadingItems: false,
       items: [
         {
           avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
@@ -93,14 +93,26 @@ export default {
           title: 'Recipe to try',
           subtitle: '<span class="text--primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
         }
-      ]
+      ],
+      title: 'List of users'
     }
   },
   methods: {
     findAllUsers () {
+      this.loadingItems = true
       userService.getAll()
         .then(response => {
+          this.loadingItems = false
           console.log(response)
+        })
+        .catch(() => {
+          this.loadingItems = false
+          this.notificationManagement.notifyUser({
+            message: "Erro on list users, please reload your page",
+            timeout: 2000,
+            showing: true,
+            color: 'error'
+          })
         })
     }
   },
