@@ -37,6 +37,7 @@ createServer({
   routes() {
     this.namespace = 'api'
 
+    // USERS
     this.get('/users', () => {
       return this.schema.all('user')
     }, { timing: GET_ALL_MS});
@@ -47,5 +48,9 @@ createServer({
       return schema.create('user', user);
     }, { timing: POST_PUT_MS})
 
+    this.delete("/users/:id", (schema, request) => {
+      let id = request.params.id
+      return schema.users.find(id).destroy()
+    })
   }
 })

@@ -8,7 +8,12 @@ const saveOrUpdate = (user) => {
   return api.post("/users", { user })
 }
 
+const deleteById = (id) => {
+  return api.delete(`/users/${id}`)
+}
+
 export default {
+  deleteById,
   getAll,
   saveOrUpdate
 }

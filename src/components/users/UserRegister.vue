@@ -26,7 +26,10 @@
           <v-col cols="12" sm="6" class="pa-0">
             <v-text-field dense label="Phone*" class="pr-md-1" outlined
               v-model="user.phone"
-              :rules="[value => !!value || 'Mandatory field']"
+              v-mask="!!user.phone && user.phone.length > 14 ? '(##) #####-####' : '(##) ####-####'"
+              :rules="[value => !!value || 'Mandatory field',
+                value => (!!value && value.length >= 14) || 'Invalid phone number format, minimum 10 numbers'
+              ]"
             ></v-text-field>
           </v-col>
           <v-col cols="8" sm="4" class="pa-0">
@@ -75,7 +78,13 @@
           <v-col cols="12" sm="6" class="pa-0">
             <v-text-field dense label="Password*" class="pl-md-1" outlined
               v-model="user.password"
-              :rules="[value => !!value || 'Mandatory field']"
+              :rules="[
+                value => !!value || 'Mandatory field',
+                value => (!!value && value.length >= 8) || 'Minimum 8 caracteres'
+              ]"
+              :type="showPassword ? 'text' : 'password'"
+              :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="showPassword = !showPassword"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -125,6 +134,7 @@ export default {
         iconId: undefined,
         password: undefined
       },
+      showPassword: false,
       registerLoading: false
     }
   },
@@ -136,6 +146,9 @@ export default {
   },
 
   methods: {
+    logar (msg) {
+      console.log(msg)
+    },
     actionPersistUser () {
       const isFormValid = this.$refs.formUserRegister.validate()
       if (isFormValid) {
@@ -149,7 +162,7 @@ export default {
               showing: true,
               color: 'success'
             })
-            // this.$router.push('/user/list')
+            this.$router.push('/user/list')
           })
           .catch(() => {
             this.registerLoading = false
